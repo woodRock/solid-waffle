@@ -1,0 +1,7 @@
+postgresql
+postgis
+qgis
+cgi-mapserver
+mapserver-bin
+libmapserver2
+mapserver-doc
