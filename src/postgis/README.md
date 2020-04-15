@@ -24,12 +24,12 @@ $ psql
 
 Create a new database.
 ```sql
-CREATE DATABASE exampledb;
+CREATE DATABASE solidwaffle;
 ```
 
 Connect to the database.
 ```sql
-\c exampledb;
+\c solidwaffle;
 ```
 
 Add the postgis extension to the database.
@@ -39,6 +39,6 @@ CREATE EXTENSION postgis;
 
 Return to bash to add the shapefile to the database.
 ```bash
-$ shp2pgsql <file> > example.sql
-$ psql -h localhost -d exampledb -U postgres -f example.sql
+$ shp2pgsql shape-file > layer.sql
+$ psql -h localhost -d solidwaffle -U woodj -f layer.sql
 ```

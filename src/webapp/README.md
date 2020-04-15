@@ -16,12 +16,12 @@ Change the _mapfilePath_ constant in the _main.js_ file to the absolute path to 
 To launch this web application you need http-server.
 
 In the local project directory this can be installed with the following command:
-```
-npm install
+```bash
+$ npm install
 ```
 
 ## Run
 The following script runs the http-server
 ```bash
-npm start
+$ npm start
 ```

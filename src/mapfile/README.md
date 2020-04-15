@@ -37,13 +37,13 @@ END
 Get the names of the layers from the database.
 
 ```bash
-$ ogrinfo PG:"host=localhost user=example password=password dbname=exampledb port=5432"
+$ ogrinfo PG:"host=localhost user=woodj password=1234 dbname=solidwaffle port=5432"
 ```
 
 The command above should return something like.
 
 ```
-INFO: Open of `PG:host=localhost user=user password=password dbname=exampledb port=5432'
+INFO: Open of `PG:host=localhost user=woodj password=1234 dbname=solidwaffle port=5432'
       using driver `PostgreSQL' successful.
 1: nz-coastlines-topo-150 (Multi Line String)
 ```
@@ -51,13 +51,13 @@ INFO: Open of `PG:host=localhost user=user password=password dbname=exampledb po
 Get the information for the needed for the mapfile.
 
 ```bash
-$ ogrinfo PG:"host=localhost user=example password=password dbname=exampledb port=5432" nz-coastlines-topo-150 -summary
+$ ogrinfo PG:"host=localhost user=woodj password=1234 dbname=solidwaffle port=5432" nz-coastlines-topo-150 -summary
 ```
 
 The command above returns something similar to the following:
 
 ```
-INFO: Open of `PG:host=localhost user=example password=password dbname=exampledb port=5432'
+INFO: Open of `PG:host=localhost user=woodj password=1234 dbname=solidwaffle port=5432'
       using driver `PostgreSQL' successful.
 
 Layer name: nz-coastlines-topo-150
@@ -111,7 +111,7 @@ END
 
 ### Data
 The USING _srid_ and _unique_ improve performance for database queries.
-```bash
+```
 DATA 'geom from "public"."nz-coastlines-topo-150k" using srid=3994 using unique gid'
 ```
 
@@ -152,9 +152,10 @@ END
 
 ### SRS
 Most tile providers use EPSG:3857 to rasterize their layers by default.
-'''map
+
+```
 wms_srs            "EPSG:3857"
-'''
+```
 
 ### Enable request
 Be default all requests are disabled, the asterisks _*_ enables all requests
@@ -175,7 +176,7 @@ http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapf
 ### Quick Test: shp2img
 The following command generates an image from the Mapfile:
 ```bash
-shp2img -m nz-coastlines-topo.map nz-coastlines-topo.png
+$ shp2img -m nz-coastlines-topo.map nz-coastlines-topo.png
 ```
 It can be used to quickly test that the Mapfile is working
 
