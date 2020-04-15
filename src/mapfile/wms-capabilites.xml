@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE WMT_MS_Capabilities SYSTEM "http://schemas.opengis.net/wms/1.1.1/WMS_MS_Capabilities.dtd"
+ [
+ <!ELEMENT VendorSpecificCapabilities EMPTY>
+ ]>  <!-- end of DOCTYPE declaration -->
+
+<WMT_MS_Capabilities version="1.1.1">
+
+<!-- MapServer version 7.2.2 OUTPUT=PNG OUTPUT=JPEG OUTPUT=KML SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=CAIRO SUPPORTS=SVG_SYMBOLS SUPPORTS=RSVG SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=FASTCGI SUPPORTS=THREADS SUPPORTS=GEOS SUPPORTS=PBF INPUT=JPEG INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE -->
+
+<Service>
+  <Name>OGC:WMS</Name>
+  <Title>wellington-nz-coastlines</Title>
+  <Abstract>A map of the Wellington Coastline NZ.</Abstract>
+  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/>
+  <ContactInformation>
+  </ContactInformation>
+</Service>
+
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <Format>application/vnd.ogc.wms_xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+    <GetMap>
+      <Format>image/png</Format>
+      <Format>image/jpeg</Format>
+      <Format>image/png; mode=8bit</Format>
+      <Format>image/vnd.jpeg-png</Format>
+      <Format>image/vnd.jpeg-png8</Format>
+      <Format>application/x-pdf</Format>
+      <Format>image/svg+xml</Format>
+      <Format>image/tiff</Format>
+      <Format>application/vnd.google-earth.kml+xml</Format>
+      <Format>application/vnd.google-earth.kmz</Format>
+      <Format>application/x-protobuf</Format>
+      <Format>application/json</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetMap>
+    <GetFeatureInfo>
+      <Format>text/plain</Format>
+      <Format>application/vnd.ogc.gml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetFeatureInfo>
+    <DescribeLayer>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </DescribeLayer>
+    <GetLegendGraphic>
+      <Format>image/png</Format>
+      <Format>image/jpeg</Format>
+      <Format>image/png; mode=8bit</Format>
+      <Format>image/vnd.jpeg-png</Format>
+      <Format>image/vnd.jpeg-png8</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetLegendGraphic>
+    <GetStyles>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetStyles>
+  </Request>
+  <Exception>
+    <Format>application/vnd.ogc.se_xml</Format>
+    <Format>application/vnd.ogc.se_inimage</Format>
+    <Format>application/vnd.ogc.se_blank</Format>
+  </Exception>
+  <VendorSpecificCapabilities />
+  <UserDefinedSymbolization SupportSLD="1" UserLayer="0" UserStyle="1" RemoteWFS="0"/>
+  <Layer>
+    <Name>nz-coastlines-topo</Name>
+    <Title>wellington-nz-coastlines</Title>
+    <Abstract>A map of the Wellington Coastline NZ.</Abstract>
+    <SRS>EPSG:3994</SRS>
+    <LatLonBoundingBox minx="174.758" miny="-41.3489" maxx="174.793" maxy="-41.3423" />
+    <BoundingBox SRS="EPSG:3994"
+                minx="6.28976e+06" miny="-3.80598e+06" maxx="6.2927e+06" maxy="-3.80525e+06" />
+    <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>coastlines</Name>
+        <Title>coastlines</Title>
+        <LatLonBoundingBox minx="174.758" miny="-41.3489" maxx="174.793" maxy="-41.3423" />
+        <BoundingBox SRS="EPSG:3994"
+                    minx="6.28976e+06" miny="-3.80598e+06" maxx="6.2927e+06" maxy="-3.80525e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/nz-coastline-topo/nz-coastlines-topo.map&amp;request=GetMetadata&amp;layer=coastlines"/>
+        </MetadataURL>
+    </Layer>
+  </Layer>
+</Capability>
+</WMT_MS_Capabilities>

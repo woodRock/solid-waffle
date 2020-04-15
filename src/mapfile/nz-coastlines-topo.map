@@ -1,5 +1,5 @@
 MAP
-    NAME "NZ Coastlines"
+    NAME "wellington-nz-coastlines"
     EXTENT        6289755.442237 -3805984.513519 6292696.369653 -3805245.394890
     UNITS         DD
     SIZE          800 600
@@ -7,43 +7,48 @@ MAP
     IMAGETYPE     PNG
 
     PROJECTION
-          "init=epsg:3394"
+          "init=epsg:3994"
     END
 
     WEB
       IMAGEPATH "/ms4w/tmp/ms_tmp/"
       IMAGEURL "/ms_tmp/"
       METADATA
-        wms_title          "NZ Coastlines"
+        wms_title          "wellington-nz-coastlines"
         wms_format         "PNG"
         wms_server_version "1.1.1"
-        wms_srs            "EPSG:3394"
+        wms_srs            "EPSG:3857"
+        wms_onlineresource "http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapfile/nz-coastlines-topo.map&"
         wms_abstract       "A map of the Wellington Coastline NZ."
         wms_enable_request "*"
 
-        wfs_title          "NZ Coastlines"
+        wfs_title          "wellington-nz-coastlines"
         wfs_format         "PNG"
-        wfs_onlineresource "https://demo.mapserver.org/cgi-bin/wfs?"
-        wfs_srs            "EPSG:3394"
+        wfs_onlineresource "http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapfile/nz-coastlines-topo.map&"
+        wfs_srs            "EPSG:3857"
         wfs_abstract       "A map of the Wellington Coastline NZ."
         wfs_enable_request "*"
       END
     END
 
     LAYER
-      NAME "Coastlines"
+      NAME "coastlines"
       TYPE Line
       STATUS ON
       CONNECTIONTYPE POSTGIS
-      CONNECTION "dbname=solidwaffle host=localhost port=5432 user=woodj password=I8i8ituyr"
+      CONNECTION "dbname=solidwaffle host=localhost port=5432 user=woodj password=1234"
       PROCESSING "CLOSE_CONNECTION=DEFER"
-      DATA 'geom from "public"."nz-coastlines-topo-150k" using srid=3394 using unique gid'
+      DATA 'geom from "public"."nz-coastlines-topo-150k" using srid=3994 using unique gid'
 
       CLASS
         STYLE
             COLOR "#FF00FF"
             WIDTH 3.0
           END
+       END
+
+       METADATA
+         wms_title "coastlines"
        END
     END
 END

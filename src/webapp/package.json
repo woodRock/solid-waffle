@@ -1,0 +1,22 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "A Leaflet web application to display a MapFile",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "serve": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Leaflet",
+    "MapServer",
+    "Postgres",
+    "Postgis"
+  ],
+  "author": "Jesse Wood",
+  "license": "MIT",
+  "dependencies": {
+    "leaflet": "^1.6.0"
+  }
+}
