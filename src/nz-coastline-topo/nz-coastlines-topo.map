@@ -1,0 +1,49 @@
+MAP
+    NAME "NZ Coastlines"
+    EXTENT        6289755.442237 -3805984.513519 6292696.369653 -3805245.394890
+    UNITS         DD
+    SIZE          800 600
+
+    IMAGETYPE     PNG
+
+    PROJECTION
+          "init=epsg:3394"
+    END
+
+    WEB
+      IMAGEPATH "/ms4w/tmp/ms_tmp/"
+      IMAGEURL "/ms_tmp/"
+      METADATA
+        wms_title          "NZ Coastlines"
+        wms_format         "PNG"
+        wms_server_version "1.1.1"
+        wms_srs            "EPSG:3394"
+        wms_abstract       "A map of the Wellington Coastline NZ."
+        wms_enable_request "*"
+
+        wfs_title          "NZ Coastlines"
+        wfs_format         "PNG"
+        wfs_onlineresource "https://demo.mapserver.org/cgi-bin/wfs?"
+        wfs_srs            "EPSG:3394"
+        wfs_abstract       "A map of the Wellington Coastline NZ."
+        wfs_enable_request "*"
+      END
+    END
+
+    LAYER
+      NAME "Coastlines"
+      TYPE Line
+      STATUS ON
+      CONNECTIONTYPE POSTGIS
+      CONNECTION "dbname=solidwaffle host=localhost port=5432 user=woodj password=I8i8ituyr"
+      PROCESSING "CLOSE_CONNECTION=DEFER"
+      DATA 'geom from "public"."nz-coastlines-topo-150k" using srid=3394 using unique gid'
+
+      CLASS
+        STYLE
+            COLOR "#FF00FF"
+            WIDTH 3.0
+          END
+       END
+    END
+END
