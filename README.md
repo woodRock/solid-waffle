@@ -2,6 +2,9 @@
 ## Aim
 Use Postgis to store a Shapefile. Then create a Mapfile with WMS and WFS capabilities to be rendered in a web application.
 
+## Map
+![leaflet map](https://imgur.com/ZQ5ZCAa.png)
+
 ## Method
 1. [x] get some datasets from LINZ (raster as image with world file & vector as shapefile)
 2. [x] load shapefile into Postgis with shp2pgsql - so you need to create a new Postgres database & install Postgis first
