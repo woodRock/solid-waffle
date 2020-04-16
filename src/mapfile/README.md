@@ -13,7 +13,7 @@ MAP
   IMAGETYPE     PNG
 
   PROJECTION
-        "init=epsg:3857"
+        "init=epsg:3994"
   END
 END
 ```
