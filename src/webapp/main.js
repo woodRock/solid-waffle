@@ -6,34 +6,43 @@ const wellington = {
   longitude: 174.776097
 };
 
-function wms() {
-    const url = 'http://localhost/cgi-bin/mapserv?map=' + mapfilePath;
-    const options = {
+var basemaps = {
+    Topography: L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a hwellington="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a hwellington="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a hwellington="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: accessToken
+    }),
+    Coastlines: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
         version: '1.1.1',
         format: 'image/png',
         transparent: true,
         layers: 'coastlines',
-        srs: "EPSG:3857" ,
-        bbox: '6289755.442237,-3805984.513519,6292696.369653,-3805245.394890',
         width: '800',
         height: '600'
-    };
-    return L.tileLayer.wms(url, options)
+    }),
+    Bathymetry: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
+        version: '1.1.1',
+        format: 'image/png',
+        transparent: true,
+        layers: 'salty-bathy',
+        width: '800',
+        height: '600'
+    })
 };
 
-function background() {
-    const url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
-    const options = {
-        attribution: 'Map data &copy; <a hwellington="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a hwellington="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a hwellington="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        srs: "EPSG:3857",
-        zoomOffset: -1,
-        accessToken: accessToken
-    };
-    return L.tileLayer(url, options);
+const overlayMaps = {
+  Background: basemaps.Topography,
+  Coastline : basemaps.Coastlines,
+  Bathymetry: basemaps.Bathymetry
 };
 
-const layers = [ background, wms ];
-const map = L.map('mapid').setView([wellington.latitude, wellington.longitude], zoom);
-layers.forEach( layer => layer().addTo(map));
+var map = L.map('mapid').setView([wellington.latitude, wellington.longitude], zoom);
+
+L.control.layers(null, overlayMaps).addTo(map);
+L.control.scale().addTo(map);
+
+basemaps.Topography.addTo(map);
+basemaps.Coastlines.addTo(map);
+basemaps.Bathymetry.addTo(map);

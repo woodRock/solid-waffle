@@ -1,7 +1,8 @@
 MAP
-    NAME "wellington-nz-coastlines"
+    NAME          "wellington-nz-coastlines"
     EXTENT        6289755.442237 -3805984.513519 6292696.369653 -3805245.394890
-    UNITS         DD
+
+    UNITS         meters
     SIZE          800 600
 
     IMAGETYPE     PNG
@@ -14,20 +15,13 @@ MAP
       IMAGEPATH "/ms4w/tmp/ms_tmp/"
       IMAGEURL "/ms_tmp/"
       METADATA
-        wms_title          "wellington-nz-coastlines"
-        wms_format         "PNG"
-        wms_server_version "1.1.1"
-        wms_srs            "EPSG:3857"
-        wms_onlineresource "http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapfile/nz-coastlines-topo.map&"
-        wms_abstract       "A map of the Wellington Coastline NZ."
-        wms_enable_request "*"
-
-        wfs_title          "wellington-nz-coastlines"
-        wfs_format         "PNG"
-        wfs_onlineresource "http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapfile/nz-coastlines-topo.map&"
-        wfs_srs            "EPSG:3857"
-        wfs_abstract       "A map of the Wellington Coastline NZ."
-        wfs_enable_request "*"
+        ows_title          "wellington-nz-coastlines"
+        ows_format         "PNG"
+        ows_server_version "1.1.1"
+        ows_srs            "EPSG:3857"
+        ows_onlineresource "http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapfile/nz-coastlines-topo.map&"
+        ows_abstract       "A map of the Wellington Coastline NZ."
+        ows_enable_request "*"
       END
     END
 
@@ -48,7 +42,23 @@ MAP
        END
 
        METADATA
-         wms_title "coastlines"
+         ows_title "coastlines"
        END
+    END
+
+    LAYER
+
+      COMPOSITE
+        OPACITY 50
+      END
+
+      NAME "salty-bathy"
+      DATA "tiff/salty.tif"
+      TYPE Raster
+      STATUS ON
+
+      METADATA
+        ows_title "salty-bathy"
+      END
     END
 END
