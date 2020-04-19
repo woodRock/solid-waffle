@@ -7,13 +7,13 @@ const wellington = {
 };
 
 var basemaps = {
-    Topography: L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a hwellington="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a hwellington="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a hwellington="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: accessToken
-    }),
+    // Topography: L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    //     attribution: 'Map data &copy; <a hwellington="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a hwellington="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a hwellington="https://www.mapbox.com/">Mapbox</a>',
+    //     id: 'mapbox/streets-v11',
+    //     tileSize: 512,
+    //     zoomOffset: -1,
+    //     accessToken: accessToken
+    // }),
     Coastlines: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
         version: '1.1.1',
         format: 'image/png',
@@ -22,27 +22,41 @@ var basemaps = {
         width: '800',
         height: '600'
     }),
-    Bathymetry: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
+    Sea: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
         version: '1.1.1',
         format: 'image/png',
         transparent: true,
-        layers: 'salty-bathy',
+        layers: 'sea',
+        width: '800',
+        height: '600'
+    }),
+    Land: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
+        version: '1.1.1',
+        format: 'image/png',
+        transparent: true,
+        layers: 'land',
         width: '800',
         height: '600'
     })
 };
 
 const overlayMaps = {
-  Background: basemaps.Topography,
+  // Background: basemaps.Topography,
   Coastline : basemaps.Coastlines,
-  Bathymetry: basemaps.Bathymetry
+  Sea: basemaps.Sea,
+  Land: basemaps.Land
 };
 
-var map = L.map('mapid').setView([wellington.latitude, wellington.longitude], zoom);
+var crs = L.CRS.EPSG4326;
+
+var map = L.map('mapid', {
+  crs: crs
+}).setView([wellington.latitude, wellington.longitude], zoom);
 
 L.control.layers(null, overlayMaps).addTo(map);
 L.control.scale().addTo(map);
 
-basemaps.Topography.addTo(map);
+// basemaps.Topography.addTo(map);
 basemaps.Coastlines.addTo(map);
-basemaps.Bathymetry.addTo(map);
+basemaps.Sea.addTo(map);
+basemaps.Land.addTo(map);

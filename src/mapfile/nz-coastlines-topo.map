@@ -18,7 +18,7 @@ MAP
         ows_title          "wellington-nz-coastlines"
         ows_format         "PNG"
         ows_server_version "1.1.1"
-        ows_srs            "EPSG:3857"
+        ows_srs            "EPSG:3994 EPSG:4326"
         ows_onlineresource "http://localhost/cgi-bin/mapserv?map=/home/woodj/Documents/solid-waffle/src/mapfile/nz-coastlines-topo.map&"
         ows_abstract       "A map of the Wellington Coastline NZ."
         ows_enable_request "*"
@@ -34,31 +34,45 @@ MAP
       PROCESSING "CLOSE_CONNECTION=DEFER"
       DATA 'geom from "public"."nz-coastlines-topo-150k" using srid=3994 using unique gid'
 
+      METADATA
+        ows_title "coastlines"
+      END
+
       CLASS
         STYLE
             COLOR "#FF00FF"
             WIDTH 3.0
           END
        END
-
-       METADATA
-         ows_title "coastlines"
-       END
     END
 
     LAYER
-
-      COMPOSITE
-        OPACITY 50
-      END
-
-      NAME "salty-bathy"
-      DATA "tiff/salty.tif"
+      NAME "sea"
+      DATA "../tiff/sea.tif"
       TYPE Raster
       STATUS ON
 
       METADATA
-        ows_title "salty-bathy"
+        ows_title "sea"
+      END
+
+      COMPOSITE
+        OPACITY 50
+      END
+    END
+
+    LAYER
+      NAME "land"
+      DATA "../tiff/land.tif"
+      TYPE Raster
+      STATUS ON
+
+      METADATA
+        ows_title "land"
+      END
+
+      COMPOSITE
+        OPACITY 50
       END
     END
 END
