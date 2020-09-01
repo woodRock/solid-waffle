@@ -7,13 +7,6 @@ const wellington = {
 };
 
 var basemaps = {
-    // Topography: L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    //     attribution: 'Map data &copy; <a hwellington="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a hwellington="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a hwellington="https://www.mapbox.com/">Mapbox</a>',
-    //     id: 'mapbox/streets-v11',
-    //     tileSize: 512,
-    //     zoomOffset: -1,
-    //     accessToken: accessToken
-    // }),
     Coastlines: L.tileLayer.wms('http://localhost/cgi-bin/mapserv?map='+mapfilePath, {
         version: '1.1.1',
         format: 'image/png',
